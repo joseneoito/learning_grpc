@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "server/pb";
+
+message Blog {
+    string title = 1;
+    string slug = 2;
+    int32 keywords = 3;
+    string author = 4;
+}
+
+message GetBlogListRequest {}
+
+message GetBlogListResponse {
+    repeated Blog blogs = 1;
+}
+
+service Blogs {
+    rpc GetBlogList(GetBlogListRequest) returns (GetBlogListResponse){}
+}
